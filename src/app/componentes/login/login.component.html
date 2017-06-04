@@ -1,0 +1,144 @@
+  <!-- Navbar -->
+  <!--
+  <div class="w3-top">
+    <div class="w3-bar w3-black w3-card-2">
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()"
+        title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a routerLink='/google-map' class="w3-bar-item w3-button w3-padding-large">Maps</a>
+      <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small"></a>
+      <div class="w3-dropdown-hover w3-hide-small">
+        <button class="w3-padding-large w3-button" title="More">REPORTES <i class="fa fa-caret-down"></i></button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="#" class="w3-bar-item w3-button">VENTAS POR LOCAL</a>
+          <a href="#" class="w3-bar-item w3-button">VENTAS POR LOCAL Y EMPLEADO</a>
+          <a href="#" class="w3-bar-item w3-button">REPORTE DE CLIENTES Y SUS COMPRAS</a>
+          <a href="#" class="w3-bar-item w3-button">IMPORTES POR DIA DE TRABAJO</a>
+          <a href="#" class="w3-bar-item w3-button">PRODUCTO MAS VENDIDO</a>
+          <a href="#" class="w3-bar-item w3-button">ESTADISTICAS</a>
+        </div>
+      </div>
+     
+     
+    </div>
+  </div>
+-->
+  <div class="container">
+    <h1>
+  {{title}}
+</h1>
+    <form class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Login</div>
+        <div class="panel-body">
+
+          <div class="form-group">
+            <label>Nombre:</label>
+            <input type="Text" class="form-control" id="nombre" name="nombre" [(ngModel)]="login.nombre" required/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="login.mail" required />
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="login.clave" />
+          </div>
+          <div class="form-group">
+            <label for="tipoUsu">Tipo Usuaio:</label>
+          <select class="form-control">
+            <option value="administrador">administrador</option>
+            <option value="encargado">encargado</option>
+            <option value="empleado">empleado</option>
+            <option value="cliente">cliente</option>
+          </select>
+          </div>
+          <input type="hidden" id="id" name="id" [(ngModel)]="login.id" />
+          <div class="form-group col-md-6 col-md-offset-2">
+            <button (click)="Ingresar()" class="btn btn-info">Ingresar</button>
+            
+            <label><input type="checkbox"> Recordarme</label>
+            <button (click)="Registrarse()" class="btn btn-info">Resgistrarse</button>
+          </div>
+
+        </div>
+      </div>
+
+
+    </form>
+<div class="col-md-2">
+            <button (click)="Ingresar()" class="btn btn-info">Ingresar Administrador</button>
+            <button (click)="Ingresar()" class="btn btn-info">Ingresar Encargado</button>
+            <button (click)="Ingresar()" class="btn btn-info">Ingresar Empleado</button>
+            <button (click)="Ingresar()" class="btn btn-info">Ingresar Cliente</button>
+</div>
+
+
+  </div>
+   
+
+
+   <!--<div class="col-md-9">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Usuarios</div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <td>Nombre</td>
+                  <td>Mail</td>
+                  <td>Clave</td>
+                  <td>Borrar</td>
+                  <td>Editar</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
+                  <td>{{user.nombre}}</td>
+                  <td>{{user.mail}}</td>
+                  <td>{{user.clave}}</td>
+                  <td><button class="delete" (click)="delete(user); $event.stopPropagation()">X</button></td>
+                  <td><button class="edit">√</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <script>
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) { myIndex = 1 }
+      x[myIndex - 1].style.display = "block";
+      setTimeout(carousel, 4000);
+    }
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
