@@ -10,7 +10,7 @@ import { AuthHttp } from 'angular2-jwt';
 @Injectable()
 export class WsService {
 
-url: string ="http://localhost:8080/public/login";
+url: string ="http://desktop-l32rr4d:8080/public/login";
 
   constructor(public http: Http, private authHttp: AuthHttp)
   {
@@ -23,7 +23,7 @@ url: string ="http://localhost:8080/public/login";
    */
   get(user: Object)
   {
-    return this.http.get(this.url, user)
+    return this.http.post(this.url, user)
     .toPromise()
     .then( this.extractData )
     .catch( this.handleError );

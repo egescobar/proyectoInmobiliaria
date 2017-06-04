@@ -7,10 +7,12 @@ export class AutService {
 
   public name: string;
   private _token: string;
+  private _rol: string;
   jwtHelper: JwtHelper = new JwtHelper();
   
   constructor( private router: Router ) {
     this._token = localStorage.getItem('token');
+    this._rol = localStorage.getItem('rol');
   }
 
   public isLogued()
@@ -27,8 +29,17 @@ export class AutService {
   public getToken ()
   {
     try {
-      console.log('getToekn', this.jwtHelper.decodeToken(this._token));
+      //console.log('getToken', this.jwtHelper.decodeToken(this._token));
       return this.jwtHelper.decodeToken(this._token);
+    } catch (error) {
+      return undefined;
+    }
+  }
+  public getRol ()
+  {
+    try {
+      //console.log('getRol', this.jwtHelper.decodeToken(this._rol));
+      return this.jwtHelper.decodeToken(this._rol);
     } catch (error) {
       return undefined;
     }
