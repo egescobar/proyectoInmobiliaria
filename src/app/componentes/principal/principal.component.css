@@ -1,4 +1,95 @@
-.contenedor
+.contenedor {
+  padding-top: 0px;
+  
+}
+
+.product {
+  margin-left: 4px;
+  background-color: white;
+  border: 2px black solid;
+  margin-top: 5px;
+  border-radius: 15px 15px 0 0;
+}
+
+.descripcion {
+  font-size: 10pt;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 15px 15px 0 0;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  color: white;
+  font-size: 12pt;
+  border-radius: 15px 15px 0 0;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+
+.img-full {
+  width: 70%;
+  margin-bottom: 0px;
+  height: 30%;
+}
+
+.type {
+  margin-top: -20px;
+  color: white;
+  position: static;
+}
+
+
+.ribbond {
+  margin-top: 15px;
+  position: absolute;
+  width: 70px;
+  height: 0px;
+  display: flex;
+  justify-content: center;
+  border-right: 10px solid transparent;
+  border-top: 20px solid green;
+}
+.Alquiler{
+  margin-top: 15px;
+  position: absolute;
+  width: 70px;
+  height: 0px;
+  display: flex;
+  justify-content: center;
+  border-right: 10px solid transparent;
+  border-top: 20px solid green;
+}
+
+.Venta{
+  margin-top: 15px;
+  position: absolute;
+  width: 70px;
+  height: 0px;
+  display: flex;
+  justify-content: center;
+  border-right: 10px solid transparent;
+  border-top: 20px solid red;
+}
+
+
+
+.direccion
 {
-    padding-top: 0px;
+    background-color: black;
+    border-left: 1px solid white;
+    color:white;
+    display: flex;
+  justify-content: center;
+}
+
+.scroll {
+    max-height: 80%;
+    overflow: auto;
 }

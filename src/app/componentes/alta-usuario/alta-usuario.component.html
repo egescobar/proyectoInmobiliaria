@@ -1,3 +1,75 @@
-<p>
-  alta-usuario works!
-</p>
+<html>
+
+<body class="bg">
+  <app-menu></app-menu>
+  <div class="container">
+    <form class="col-md-3 ">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Login Administrador</div>
+        <div class="panel-body">
+
+          <div class="form-group">
+            <label>Nombre:</label>
+            <input type="Text" class="form-control" id="nombre" name="nombre" [(ngModel)]="login.nombre" required/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="login.mail" required />
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="login.clave" />
+          </div>
+          <div class="form-group">
+            <label for="tipoUsu">Tipo Usuaio:</label>
+          <select>
+            <option value="administrador">administrador</option>
+            <option value="encargado">encargado</option>
+            <option value="empleado">empleado</option>
+            <option value="cliente">cliente</option>
+          </select>
+          </div>
+          <input type="hidden" id="id" name="id" [(ngModel)]="login.id" />
+          <div class="form-group col-md-6 col-md-offset-2">
+            <button (click)="Ingresar()" class="btn btn-info">Ingresar</button>
+            <label><input type="checkbox"> Recordarme</label>
+            <button (click)="Registrarse()" class="btn btn-info">Resgistrarse</button>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+    <div class="col-md-9">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Usuarios</div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <td>Nombre</td>
+                  <td>Mail</td>
+                  <td>Clave</td>
+                  <td>Borrar</td>
+                  <td>Editar</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
+                  <td>{{user.nombre}}</td>
+                  <td>{{user.mail}}</td>
+                  <td>{{user.clave}}</td>
+                  <td><button class="delete" (click)="delete(user); $event.stopPropagation()">X</button></td>
+                  <td><button class="edit">√</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+
+</html>

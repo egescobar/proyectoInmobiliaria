@@ -5,5 +5,7 @@ export class producto {
   descripcion: string;
   moneda: string;
   precio: number;
+  es_oferta: string;
+  imagen: string;
   sucursal:string;
 }

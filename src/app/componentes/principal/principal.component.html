@@ -1,6 +1,26 @@
 <app-menu></app-menu>
 <div class="contenedor">
-<p>
-hola mundo
-</p>
+
+
+  <div *ngFor="let producto of productos">
+    <div class="col col-sm-3 product">
+      <div class="row title">{{producto.direccion}}</div>
+      <div class="row">
+        <div class="col col-sm-7">
+          <div class="{{producto.tipo_producto}}">
+            <div class="type">{{producto.tipo_producto}}</div>
+          </div>
+          <img *ngIf="producto.imagen != ''" class="img-full" src="{{producto.imagen}}">
+          <img *ngIf="producto.imagen ==''"  class="img-full" src="http://rossispopup.com/wp-content/plugins/post-gallery-and-archive/default-img.png">
+        </div>
+        <div class="col col-md-5 descripcion">{{producto.descripcion}}</div>
+      </div>
+      <div class="row ">
+        <div class="col col-sm-12 price">
+          Precio: ${{producto.precio}}
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

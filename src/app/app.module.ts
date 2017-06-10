@@ -18,11 +18,13 @@ import { PrincipalComponent } from './componentes/principal/principal.component'
 import { AltaProductoComponent } from './componentes/alta-producto/alta-producto.component';
 import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.component';
 
+import { altaProductoService } from './componentes/alta-producto/alta-producto.service';
+
 
 const rutasDeNavegacion: Routes = [
                     { path: '', component: LoginComponent },
-                    { path: 'alta-producto', component: AltaProductoComponent },
-                    { path: 'principal', component: PrincipalComponent }
+                    { path: 'principal', component: PrincipalComponent },
+                    { path: 'alta-producto', component: AltaProductoComponent }
                   ];
 
 
@@ -34,6 +36,7 @@ const rutasDeNavegacion: Routes = [
     PrincipalComponent,
     AltaProductoComponent,
     AltaUsuarioComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ const rutasDeNavegacion: Routes = [
   providers: [
     WsService,
     AutService,
-    VerificarJWTService
+    VerificarJWTService,
+    altaProductoService
   ],
   bootstrap: [AppComponent]
 })
