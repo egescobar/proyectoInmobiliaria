@@ -17,3 +17,11 @@
   padding-bottom: 25px;
   width: 100%;
 }
+.tamLetras {
+  font-size: 8pt;
+}
+
+.scroll {
+    max-height: 80%;
+    overflow: auto;
+}

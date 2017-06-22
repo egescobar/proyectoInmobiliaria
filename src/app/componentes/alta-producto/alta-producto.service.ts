@@ -10,7 +10,8 @@ export class altaProductoService{
 
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    private productoUrl ='http://desktop-l32rr4d:8080/public/producto'
+    //private productoUrl ='http://desktop-l32rr4d:8080/public/producto'
+    private productoUrl ='http://escobargraciela.hol.es/public/producto'
 
     constructor(private http: Http) { }
 
@@ -43,6 +44,15 @@ export class altaProductoService{
     return this.http.delete(url, {headers: this.headers,body:{id_producto:id_producto}})
       .toPromise()
       .then(() => null)
+      .catch(this.productoError);
+  }
+
+  update(producto: producto): Promise<producto> {
+    const url = this.productoUrl;
+    return this.http
+      .put(url, JSON.stringify(producto), {headers: this.headers})
+      .toPromise()
+      .then(() => producto)
       .catch(this.productoError);
   }
 

@@ -1,26 +1,19 @@
 <app-menu></app-menu>
-<div class="contenedor">
+<div class="container">
+  <button routerLink="/alta-pedido" class="btn btn-primary">Ingresar Pedido</button>
+</div>
 
+<!--PARA GOOGLE MAPS-->
+<div class="panel-responsive">
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <div *ngFor="let productoMap of productoMaps">
+      <agm-marker [latitude]=productoMap.lat [longitude]=productoMap.lng [iconUrl]="'./assets/ping.png'">
 
-  <div *ngFor="let producto of productos">
-    <div class="col col-sm-3 product">
-      <div class="row title">{{producto.direccion}}</div>
-      <div class="row">
-        <div class="col col-sm-7">
-          <div class="{{producto.tipo_producto}}">
-            <div class="type">{{producto.tipo_producto}}</div>
-          </div>
-          <img *ngIf="producto.imagen != ''" class="img-full" src="{{producto.imagen}}">
-          <img *ngIf="producto.imagen ==''"  class="img-full" src="http://rossispopup.com/wp-content/plugins/post-gallery-and-archive/default-img.png">
-        </div>
-        <div class="col col-md-5 descripcion">{{producto.descripcion}}</div>
-      </div>
-      <div class="row ">
-        <div class="col col-sm-12 price">
-          Precio: ${{producto.precio}}
-        </div>
-      </div>
-
+        <agm-info-window class="">
+          <strong class="col col-md-5">{{productoMap.descripcion}}</strong>
+          <img class="img-full col col-md-2" src="{{productoMap.imagen}}">
+        </agm-info-window>
+      </agm-marker>
     </div>
-  </div>
+  </agm-map>
 </div>

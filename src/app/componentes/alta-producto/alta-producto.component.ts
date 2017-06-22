@@ -37,6 +37,12 @@ GuardarProducto(): void {
         this.producto = new producto();
       });
     }
+    else
+    {
+      this.productoService.update(this.producto).then(hero=>{
+        this.producto = new producto();
+          });
+    }
     //.then(() => this.goBack());
   }
   
@@ -51,9 +57,25 @@ GuardarProducto(): void {
    delete(prod: producto): void {
     this.productoService
       .delete(prod.id_producto)
-      
+      .then(() => {
+        this.productos = this.productos.filter(h => h !== prod);
+        if (this.selectedProductos === prod) { this.selectedProductos = null; }
+      });
     };
     
+    modificar(producto:producto):void{
+      this.producto.id_producto =producto.id_producto;
+      this.producto.tipo_producto =producto.tipo_producto;
+      this.producto.direccion =producto.direccion;
+      this.producto.descripcion =producto.descripcion;
+      this.producto.sucursal =producto.sucursal;
+      this.producto.moneda =producto.moneda;
+      this.producto.precio =producto.precio;
+      this.producto.es_oferta =producto.es_oferta;
+      this.producto.imagen =producto.imagen;
+      this.producto.sucursal =producto.sucursal;
+
+    }
 
   /* delete(prod: producto): void {
     this.productoService

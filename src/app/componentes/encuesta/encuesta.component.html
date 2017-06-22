@@ -1,0 +1,82 @@
+<app-menu></app-menu>
+<div class="container">
+  <form class="col-md-7 ">
+    <div class="panel panel-primary">
+      <div class="panel-heading center" style="font-size:24px"> Encuesta de sastifacción</div>
+      <div class="panel-body">
+
+        <div class="form-group" data-toggle="radio">
+          <label>1) -Cómo conoció Inmobiliaria el Campito?</label>
+          <label class="container">
+          <input type="radio"  id="como_nos_conocio" name="como_nos_conocio" value="1" [(ngModel)]="encuesta.como_nos_conocio"> TV/Radio</label>
+          <label class="container">
+          <input type="radio"  id="como_nos_conocio" name="como_nos_conocio" value="2" [(ngModel)]="encuesta.como_nos_conocio"> Buscador de Internet</label>
+          <label class="container">
+          <input type="radio"  id="como_nos_conocio" name="como_nos_conocio" value="3" [(ngModel)]="encuesta.como_nos_conocio"> Oficina/ Agente</label>
+          <label class="container">
+          <input type="radio"  id="como_nos_conocio" name="como_nos_conocio" value="4" [(ngModel)]="encuesta.como_nos_conocio"> Amigos/ Conocidos</label>
+          <label class="container">
+          <input type="radio"  id="como_nos_conocio" name="como_nos_conocio" value="5" [(ngModel)]="encuesta.como_nos_conocio"> Otro</label>
+        </div>
+
+        <div class="form-group" data-toggle="radio">
+          <label>2) -Cuál o cuáles fueron los motivos por los que contrató los servicios de  Inmobiliaria el Campito?</label>
+          <label class="container">
+          <input type="radio"  id="motivos_que_nos_contrato" name="motivos_que_nos_contrato" value="1" [(ngModel)]="encuesta.motivos_que_nos_contrato"> Ahorro de tiempo</label>
+          <label class="container">
+          <input type="radio"  id="motivos_que_nos_contrato" name="motivos_que_nos_contrato" value="2" [(ngModel)]="encuesta.motivos_que_nos_contrato"> Ahoro de papeleo</label>
+          <label class="container">
+          <input type="radio"  id="motivos_que_nos_contrato" name="motivos_que_nos_contrato" value="3" [(ngModel)]="encuesta.motivos_que_nos_contrato"> Necesidad de asesoramieno fiscal, legal, económico ...</label>
+          <label class="container">
+          <input type="radio"  id="motivos_que_nos_contrato" name="motivos_que_nos_contrato" value="4" [(ngModel)]="encuesta.motivos_que_nos_contrato"> Otro</label>
+        </div>
+        
+         <div class="form-group" data-toggle="radio">
+          <label>3) -Cuál o cuáles de estos servicios contrató con Inmobiliaria el Campito?</label>
+          <label class="container">
+          <input type="radio"  id="servicio_que_contrato" name="servicio_que_contrato" value="1" [(ngModel)]="encuesta.servicio_que_contrato"> Alquiler</label>
+          <label class="container">
+          <input type="radio"  id="servicio_que_contrato" name="servicio_que_contrato" value="2" [(ngModel)]="encuesta.servicio_que_contrato"> Venta</label>
+          <label class="container">
+          <input type="radio"  id="servicio_que_contrato" name="servicio_que_contrato" value="3" [(ngModel)]="encuesta.servicio_que_contrato"> Tasación</label>
+          <label class="container">
+          <input type="radio"  id="servicio_que_contrato" name="servicio_que_contrato" value="4" [(ngModel)]="encuesta.servicio_que_contrato"> Financiación a medida</label>
+          <label class="container">
+          <input type="radio"  id="servicio_que_contrato" name="servicio_que_contrato" value="5" [(ngModel)]="encuesta.servicio_que_contrato"> Gestion de herencias</label>
+          <label class="container">
+          <input type="radio"  id="servicio_que_contrato" name="servicio_que_contrato" value="6" [(ngModel)]="encuesta.servicio_que_contrato"> Otro</label>
+        </div>
+
+        <div class="form-group" data-toggle="radio">
+          <label>4) -Atencion del personal de Inmobiliaria el Campito?</label>
+          <label class="container">
+          <input type="radio"  id="atencion_del_personal" name="atencion_del_personal" value="1" [(ngModel)]="encuesta.atencion_del_personal"> Muy Bueno</label>
+          <label class="container">
+          <input type="radio"  id="atencion_del_personal" name="atencion_del_personal" value="2" [(ngModel)]="encuesta.atencion_del_personal"> Bueno</label>
+          <label class="container">
+          <input type="radio"  id="atencion_del_personal" name="atencion_del_personal" value="3" [(ngModel)]="encuesta.atencion_del_personal"> Regular</label>
+          <label class="container">
+          <input type="radio"  id="atencion_del_personal" name="atencion_del_personal" value="4" [(ngModel)]="encuesta.atencion_del_personal"> Malo</label>
+        </div>
+
+         <div class="form-group col-md-10">
+          <label>5) -Mejoramiento del Servicio:</label>
+          <textarea class="form-control col-md-12" rows="3" id="mejoramiento_servicio" name="mejoramiento_servicio" [(ngModel)]="encuesta.mejoramiento_servicio"
+            required></textarea>
+        </div>
+
+         <div class="form-group col-md-10">
+          <label>6) -Comentarios:</label>
+          <textarea class="form-control col-md-12" rows="3" id="comentarios" name="comentarios" [(ngModel)]="encuesta.comentarios"
+            required></textarea>
+        </div>
+        <input type="hidden" id="id_encuesta" name="id_encuesta" [(ngModel)]="encuesta.id_encuesta" />
+        <div class="form-group col-md-6 col-md-offset-2">
+          <button (click)="Finalizar()" class="btn btn-info">Finalizar</button>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+</div>

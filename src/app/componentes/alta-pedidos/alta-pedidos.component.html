@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<div class="contenedor">
+  <form class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading center">Ingrese su Pedido</div>
+      <div class="scroll" style="font-size:13px">
+        <div class="form-group col-md-6">
+          <label for="tipoPedido">Tipo Pedido:</label>
+          <select class="form-control col-md-4" id="tipo_pedido" name="tipo_pedido" [(ngModel)]="pedido.tipo_pedido">
+            <option value="Venta">Venta</option>
+            <option value="Alquiler">Alquiler</option>
+          </select>
+        </div>
+        <div class="form-group col-md-10">
+          <label>Descripción del pedido:</label>
+          <textarea class="form-control col-md-12" rows="3" id="descripcion" name="descripcion" [(ngModel)]="pedido.descripcion"
+            required></textarea>
+        </div>
+        <div class="form-group col-md-5">
+          <label for="tiposucursal">De que sucursal es:</label>
+          <select class="form-control" id="sucursal" name="sucursal" [(ngModel)]="pedido.sucursal">
+            <option value="1">Wilde</option>
+            <option value="2">Sarandi</option>
+            <option value="3">Palermo</option>
+          </select>
+        </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+          <button (click)="EnviarPedido()" class="btn btn-info">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

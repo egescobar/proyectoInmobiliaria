@@ -1,44 +1,96 @@
-
 <div class="container">
   <h1>
     {{title}}
   </h1>
-  <form (ngSubmit)="enviar()" class="col-md-3">
-    <div class="panel panel-primary">
-      <div class="panel-heading center">Login</div>
-      <div class="panel-body">
+  <div class="row">
+    <form (ngSubmit)="enviar()" class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Login</div>
+        <div class="panel-body">
 
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="login.mail" required />
-        </div>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="login.clave" />
-        </div>
-        <input type="hidden" id="id" name="id" [(ngModel)]="login.id" />
-        <div class="form-group col-md-6 col-md-offset-2">
-          <button type="submit" class="btn btn-info">Ingresar</button>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="login.mail" required />
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="login.clave" />
+          </div>
+          <input type="hidden" id="id" name="id" [(ngModel)]="login.id" />
+          <div class="form-group col-md-6 col-md-offset-2">
+            <button type="submit" class="btn btn-info">Ingresar</button>
 
-          <label><input type="checkbox"> Recordarme</label>
-          <button (click)="Registrarse()" class="btn btn-danger">Registrarse</button>
-        </div>
+            <label><input type="checkbox"> Recordarme</label>
+            <button (click)="Registrarse()" class="btn btn-danger">Registrarse</button>
+          </div>
 
+        </div>
+      </div>
+    </form>
+
+    <div class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Botones de Testeo</div>
+        <div class="panel-body">
+          <p><button (click)="IngresarAdministrador()" class="btn btn-info">Ingresar Administrador</button></p>
+          <p><button (click)="IngresarEncargado()" class="btn btn-info">Ingresar Encargado</button></p>
+          <p><button (click)="IngresarEmpleado()" class="btn btn-info">Ingresar Empleado</button></p>
+          <p><button (click)="IngresarCliente()" class="btn btn-info">Ingresar Cliente</button></p>
+        </div>
       </div>
     </div>
-  </form>
 
-  <div class="col-md-2">
-    <div class="panel panel-primary">
-      <div class="panel-heading center">Botones de Testeo</div>
-      <div class="panel-body">
-        <button (click)="IngresarAdministrador()" class="btn btn-info">Ingresar Administrador</button>
-        <button (click)="IngresarEncargado()" class="btn btn-info">Ingresar Encargado</button>
-        <button (click)="IngresarEmpleado()" class="btn btn-info">Ingresar Empleado</button>
-        <button (click)="IngresarCliente()" class="btn btn-info">Ingresar Cliente</button>
+    <div class="col col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Mapa de Sucursales</div>
+        <div class="panel-body">
+        <agm-map [latitude]="lat" [longitude]="lng" >
+        <div *ngFor="let sucursalesMap of sucursalesMaps">
+          <agm-marker [latitude]=sucursalesMap.lat 
+              [longitude]=sucursalesMap.lng
+              [iconUrl]="'./assets/ping.png'" >
+
+        <agm-info-window class="">
+          <strong class="col col-md-3">{{sucursalesMap.descripcion}}</strong>
+           <img class="img-full col col-md-2" src="{{sucursalesMap.imagen}}">
+        </agm-info-window>
+        </agm-marker>
       </div>
+      </agm-map>
+    </div>
     </div>
   </div>
+
+
+
+ <!-- <div class="row">
+    <div class="col col-md-4">
+      <h2>{{ title1 }}</h2>
+      <label class="col col-md-4">Dirección: Fabian Onsari 14, B1875EJA Avellaneda, Buenos Aires</label>
+      <img class="img-full" src="./assets/primero.png">
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+
+    <div class="col col-md-4">
+      <h2>{{ title2 }}</h2>
+      <label class="col col-md-4">Dirección: Av. Bartolomé Mitre 3005, B1872GFI Gran Buenos Aires, Buenos Aires</label>
+      <img class="img-full" src="./assets/segundo.png">
+      <agm-map [latitude]="lat1" [longitude]="lng1">
+        <agm-marker [latitude]="lat1" [longitude]="lng1"></agm-marker>
+      </agm-map>
+    </div>
+
+    <div class="col col-md-4">
+      <h2>{{ title3 }}</h2>
+      <label class="col col-md-4">Dirección: Av. Raúl Scalabrini Ortiz 1525, C1414DOC CABA</label>
+      <img class="img-full" src="./assets/tercero.png">
+      <agm-map [latitude]="lat2" [longitude]="lng2">
+        <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
+      </agm-map>
+    </div>
+  </div>-->
 
 </div>
 

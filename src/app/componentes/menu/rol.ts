@@ -1,9 +1,9 @@
 export class rol {
   id_rol: number;
   descripcion: string;
-  crear_usuario: boolean;
-  crear_sucursal: boolean;
-  modificar_producto: boolean;
-  crear_producto: boolean;
-  ver_ofertas: boolean;
+  crear_usuario: number;
+  crear_sucursal: number;
+  modificar_producto: number;
+  crear_producto: number;
+  ver_ofertas: number;
 }
