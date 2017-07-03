@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 
 import { lispedido } from './lispedido';
 import { listdoService } from './lispedido.service';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-lis-pedidos',
@@ -14,36 +15,41 @@ import { listdoService } from './lispedido.service';
 })
 export class LisPedidosComponent implements OnInit {
 
-lispedido: lispedido;
-lispedidos: lispedido[]=[];
-selectedPedidos:lispedido;
+  lispedido: lispedido;
+  lispedidos: lispedido[] = [];
+  selectedPedidos: lispedido;
 
   constructor(
-    private  listdoService: listdoService,
+    private listdoService: listdoService,
     private route: ActivatedRoute,
     private location: Location
   ) { }
 
   ngOnInit() {
-     this.lispedido = new lispedido();
-    this.lispedido.id_pedido=0;
+    this.lispedido = new lispedido();
+    this.lispedido.id_pedido = 0;
     this.getListadoPedidos();
   }
 
- getListadoPedidos(): void {
+  getListadoPedidos(): void {
     this.listdoService
       .get()
       .then(heroes => this.lispedidos = heroes);
-  
+
   }
 
- delete(lispedido: lispedido): void {
+  delete(lispedido: lispedido): void {
     this.listdoService
       .delete(lispedido.id_pedido)
       .then(() => {
         this.lispedidos = this.lispedidos.filter(h => h !== lispedido);
         if (this.selectedPedidos === lispedido) { this.selectedPedidos = null; }
       });
-    };
+  };
+
+  exportExcel() {
+    var data = this.lispedidos;
+    new Angular2Csv(data, 'listadoPedidos');
+  }
 
 }

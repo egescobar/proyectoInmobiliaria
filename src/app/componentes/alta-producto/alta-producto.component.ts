@@ -1,34 +1,97 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,NgZone,NgModule,ViewChild,ElementRef } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 import { Router } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { BrowserModule } from "@angular/platform-browser";
 import { producto } from './altaProducto';
 import { altaProductoService }  from './alta-producto.service';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+
+import {} from '@types/googlemaps';
+declare var google: any;
 
 @Component({
   selector: 'app-alta-producto',
   templateUrl: './alta-producto.component.html',
   styleUrls: ['./alta-producto.component.css']
 })
+
 export class AltaProductoComponent implements OnInit {
 producto: producto;
 productos: producto[]=[];
 selectedProductos:producto;
 
+
+  public latitude: number;
+  public longitude: number;
+  public searchControl: FormControl;
+  public zoom: number;
+
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
+
   constructor( 
     private  productoService: altaProductoService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+        private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone
   ) {}
 
   ngOnInit() {
     this.producto = new producto();
     this.producto.id_producto=0;
     this.getProductos();
+    
+    //set google maps defaults
+    this.zoom = 4;
+    this.latitude = 39.8282;
+    this.longitude = -98.5795;
+    
+    //create search FormControl
+    this.searchControl = new FormControl();
+    
+    //set current position
+    this.setCurrentPosition();
+    
+    //load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+  
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+          
+          //set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          
+          this.longitude = place.geometry.location.lng();
+          console.log(place.geometry.location.lng());
+          this.zoom = 12;
+        });
+      });
+    });
   
   }
+ private setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 12;
+      });
+    }
+  }
+
 GuardarProducto(): void {
     if (this.producto.id_producto == 0) {
       this.productoService.insert(this.producto).then(hero => {

@@ -5,6 +5,10 @@ import { Location } from '@angular/common';
 
 import {usuario} from './usuario';
 import {usuarioService} from './alta-usuario.service';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+
+
+import * as jsPDF from 'jspdf'
 
 @Component({
   selector: 'app-alta-usuario',
@@ -15,6 +19,7 @@ export class AltaUsuarioComponent implements OnInit {
   usuario: usuario;
   usuarios: usuario[] = [];
   selectedUsuarios: usuario;
+  table:any;
 
   constructor( private usrService: usuarioService,
     private route: ActivatedRoute,
@@ -68,4 +73,32 @@ export class AltaUsuarioComponent implements OnInit {
 
     }
 
+    exportExcel() {
+    var data = this.usuarios;
+    var options = {fieldSeparator:';',
+                    showLabels: true};
+    new Angular2Csv(data, 'listadoUsuarios',options);
+  }
+
+exportPDF() {
+    var data = this.usuarios;
+var specialElementHandlers = {
+	'#editor': function(element, renderer){
+		return true;
+	}
+};
+
+ var doc = new jsPDF();
+        doc.text(20, 20, 'Listado de Usuarios');
+   doc.fromHTML(document.querySelector('#table'), 20, 30, {
+	'width': 250, 
+	'elementHandlers': specialElementHandlers
+});
+
+        doc.addPage();
+        doc.text(20, 20, 'Do you like that?');
+
+        // Save the PDF
+        doc.save('ListadoDeUsuarios.pdf');
+  }
 }

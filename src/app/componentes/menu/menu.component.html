@@ -22,7 +22,7 @@
         <li class="dropdown" *ngIf="rol.modificar_producto==1">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Ventas por Local</a></li>
+            <li  *ngIf="rol.crear_usuario==1"><a routerLink="/ventasPorLocal">Ventas por Local<span class="sr-only">(current)</span> </a></li>
             <li><a href="#">Ventas por Local y Empleado</a></li>
             <li><a href="#">Reportes de Clientes y sus Compras</a></li>
           </ul>

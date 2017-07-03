@@ -6,3 +6,9 @@
     max-height: 80%;
     overflow: auto;
 }
+
+agm-map {
+  height: 200px;
+  width: 100%;
+  
+}

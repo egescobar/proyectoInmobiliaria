@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
@@ -29,6 +30,7 @@ import { AltaPedidoService } from './componentes/alta-pedidos/pedidoService';
 import { listdoService } from './componentes/lis-pedidos/lispedido.service';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { EncuestaService } from './componentes/encuesta/encuesta.service';
+import { VentasPorLocalComponent } from './componentes/ventas-por-local/ventas-por-local.component';
 
 
 const rutasDeNavegacion: Routes = [
@@ -39,7 +41,8 @@ const rutasDeNavegacion: Routes = [
   { path: 'Registrarse', component: RegistrarseComponent },
   { path: 'lispedido', component: LisPedidosComponent },
   { path: 'alta-pedido', component: AltaPedidosComponent },
-  { path: 'encuesta', component: EncuestaComponent}
+  { path: 'encuesta', component: EncuestaComponent},
+  {path: 'ventasPorLocal',component: VentasPorLocalComponent}
 ];
 
 
@@ -55,7 +58,8 @@ const rutasDeNavegacion: Routes = [
     FiltroPrecioPipe,
     LisPedidosComponent,
     AltaPedidosComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    VentasPorLocalComponent
 
   ],
   imports: [
@@ -65,10 +69,13 @@ const rutasDeNavegacion: Routes = [
     HttpModule,
     JsonpModule,
     JwtModule,
+     ChartsModule,
     RouterModule.forRoot(rutasDeNavegacion),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAObu_s0yUsEgHFo42krFyo-We02oIDvzU'
-    })
+      apiKey: 'AIzaSyAObu_s0yUsEgHFo42krFyo-We02oIDvzU',
+      libraries: ["places"]
+    }),
+    ReactiveFormsModule
   ],
   providers: [
     WsService,

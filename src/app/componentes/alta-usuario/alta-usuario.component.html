@@ -1,10 +1,11 @@
 <html>
+
 <body class="bg">
   <app-menu></app-menu>
   <div class="container">
     <form class="col-md-3 ">
       <div class="panel panel-primary">
-        <div class="panel-heading center">Login Administrador</div>
+        <div class="panel-heading center">Registrar Usuarios</div>
         <div class="panel-body">
 
           <div class="form-group">
@@ -21,7 +22,7 @@
           </div>
           <div class="form-group">
             <label for="tipoUsu">Tipo Usuario:</label>
-          <select class="form-control" id="rol" name="rol" [(ngModel)]="usuario.rol">
+            <select class="form-control" id="rol" name="rol" [(ngModel)]="usuario.rol">
             <option value="1">Administrador</option>
             <option value="2">Encargado</option>
             <option value="3">Empleado</option>
@@ -30,7 +31,7 @@
           </div>
           <div class="form-group">
             <label for="tipoSucu">Sucursal:</label>
-          <select class="form-control" id="sucursal" name="sucursal" [(ngModel)]="usuario.sucursal">
+            <select class="form-control" id="sucursal" name="sucursal" [(ngModel)]="usuario.sucursal">
             <option value="1">Wilde</option>
             <option value="2">Sarandi</option>
             <option value="3">Palermo</option>
@@ -38,19 +39,19 @@
           </div>
           <input type="hidden" id="id" name="id" [(ngModel)]="usuario.id" />
           <div class="form-group col-md-6 col-md-offset-2">
-            <button (click)="Registrarse()" class="btn btn-info">Resgistrarse</button>
+            <button (click)="Registrarse()" class="btn btn-info">Grabar</button>
           </div>
 
         </div>
       </div>
     </form>
-    
+
     <div class="col-md-9">
       <div class="panel panel-primary">
         <div class="panel-heading center">Usuarios</div>
         <div class="panel-body">
           <div class="table-responsive">
-            <table class="table table-condensed">
+            <table id="table" name="table" class="table table-condensed">
               <thead>
                 <tr>
                   <td>Nombre</td>
@@ -70,15 +71,20 @@
                   <td>{{usuario.rol}}</td>
                   <td>{{usuario.sucursal}}</td>
                   <td><button class="btn btn-danger btn-sm  glyphicon glyphicon-trash" (click)="delete(usuario); $event.stopPropagation()"></button></td>
-                  <td><button class="btn btn-warning btn-sm  glyphicon glyphicon-pencil" (click)="modify(usuario); $event.stopPropagation()" ></button></td>
+                  <td><button class="btn btn-warning btn-sm  glyphicon glyphicon-pencil" (click)="modify(usuario); $event.stopPropagation()"></button></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
+      <div>
+      <button class="btn btn-primary" (click)="exportExcel()">Excel</button>
+      <button class="btn btn-primary" (click)="exportPDF()">PDF</button>
     </div>
+    </div>
+    
   </div>
-  </body>
+</body>
 
 </html>
