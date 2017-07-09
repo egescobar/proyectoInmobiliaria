@@ -1,0 +1,33 @@
+<div *ngIf="visible=='true'">
+  <div class="col col-md-3 float">
+    <div class="close" (click)="close()">X</div>
+    <div class="product-container">
+
+      <img src="{{url+producto.imagen[0]}}" class="img-thumbail"(click)="showCarrousel()">
+      <span class="direccion">
+        {{producto.direccion}} 
+        <span>{{producto.tipo_producto}}</span>
+        </span>
+      
+      <div class="{{carrouselVisible}}">
+      <hr>
+      <carousel [interval]="NextPhotoInterval" [noWrap]="noLoopSlides">
+        <slide *ngFor="let foto of producto.imagen; let index=index" [active]="true">
+          <img [src]="url+foto" class="img-responsive" style="margin:auto;">
+          <div class="carousel-caption">
+          </div>
+        </slide>
+      </carousel>
+      </div>
+      <hr>
+      <p>Precio:
+        <span class="precio">{{producto.moneda}} {{producto.precio}}</span>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Hacer Pedido</button>
+      </p>
+
+      <hr>
+      <p>Descripcion: {{producto.descripcion}}</p>
+
+    </div>
+  </div>
+</div>

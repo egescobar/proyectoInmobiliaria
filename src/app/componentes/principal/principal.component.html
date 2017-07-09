@@ -1,19 +1,28 @@
 <app-menu></app-menu>
+ <app-pedidos></app-pedidos>
+
+<!--
 <div class="container">
   <button routerLink="/alta-pedido" class="btn btn-primary">Ingresar Pedido</button>
 </div>
-
+-->
 <!--PARA GOOGLE MAPS-->
 <div class="panel-responsive">
+   <view-producto #component></view-producto>
   <agm-map [latitude]="lat" [longitude]="lng">
-    <div *ngFor="let productoMap of productoMaps">
-      <agm-marker [latitude]=productoMap.lat [longitude]=productoMap.lng [iconUrl]="'./assets/ping.png'">
+    
+    <div *ngFor="let producto of productos">
+     
+      <agm-marker [latitude]="producto.latitud" [longitude]="producto.longitud" [iconUrl]="'./assets/ping.png'">
 
         <agm-info-window class="">
-          <strong class="col col-md-5">{{productoMap.descripcion}}</strong>
-          <img class="img-full col col-md-2" src="{{productoMap.imagen}}">
+          <strong class="col col-md-5">{{producto.descripcion}}</strong>
+          <p><button class="btn btn-warning" (click)="visibleContainer(producto)">Ver producto</button></p>
+          <p><button class="btn btn-default" (click)="irProducto(producto)">Ir a Producto</button></p>
+          <!--<img class="img-full col col-md-2" src="{{producto.imagen}}">-->
         </agm-info-window>
       </agm-marker>
     </div>
   </agm-map>
+  
 </div>

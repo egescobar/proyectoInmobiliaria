@@ -1,0 +1,63 @@
+.hidden {
+  visibility: hidden;
+}
+
+.float {
+  height: auto;
+  background-color: white;
+  position: absolute;
+  z-index: 5;
+  margin-top: 20px;
+  margin-left: 20px;
+  border: 1px solid #003580
+}
+
+.close {
+  margin-top: 15px;
+  right: 10px;
+  border-radius: 5px 5px 0 0;
+}
+
+.img-responsive {
+  height: 200px;
+  width: 50%;
+}
+
+.precio {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #0ab21b;
+}
+
+.product-container {
+  margin-top: 10px;
+}
+
+.img-thumbail {
+  width: 90px;
+  height: 90px;
+ 
+}
+
+.direccion {
+  font-size: 139%;
+  color: #07c;
+  position: absolute;
+  margin-right: 30px;
+  margin-left: 15px;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.showCarrousel {
+  visibility: visible;
+  position: relative;
+}
+
+.hideCarrousel {
+  visibility: hidden;
+  position: absolute;
+}
