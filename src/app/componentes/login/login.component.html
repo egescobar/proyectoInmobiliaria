@@ -44,7 +44,23 @@
       <div class="panel panel-primary">
         <div class="panel-heading center">Mapa de Sucursales</div>
         <div class="panel-body">
-        <agm-map [latitude]="lat" [longitude]="lng" >
+
+<div class="form-group">
+        <input placeholder="Enter source location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #pickupInput [formControl]="destinationInput">
+        <input placeholder="Enter destination" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #pickupOutput [formControl]="destinationOutput" >
+      </div>
+       <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom"  >
+                <!-- <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconurl">
+                    <sebm-google-map-info-window>
+                        <strong>InfoWindow content</strong>
+                    </sebm-google-map-info-window>
+                </sebm-google-map-marker> -->
+                <agm-map-directions [origin]="origin" [destination]="destination">
+                  <agm-info-window [disableAutoPan]="true">
+                    Hi, this is the content of the <strong>info window</strong>
+                  </agm-info-window>
+                </agm-map-directions>
+              
         <div *ngFor="let sucursalesMap of sucursalesMaps">
           <agm-marker [latitude]=sucursalesMap.lat 
               [longitude]=sucursalesMap.lng

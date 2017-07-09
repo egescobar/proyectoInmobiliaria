@@ -14,17 +14,17 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li *ngIf="rol.crear_usuario==1"><a routerLink="/alta-usuario">Alta Usuario<span class="sr-only">(current)</span> </a></li>
-        <li *ngIf="rol.ver_ofertas==0"> <a>Ver Ofertas</a></li>
+        <li *ngIf="rol.crear_usuario==1"><a routerLink="/alta-usuario">ABM Usuarios<span class="sr-only">(current)</span> </a></li>
+        <li *ngIf="rol.ver_ofertas==0"> <a>Ofertas</a></li>
         <li *ngIf="rol.crear_producto==1"><a routerLink="/alta-producto">ABM Productos/Ofertas <span class="sr-only">(current)</span></a></li>
         <li *ngIf="rol.crear_usuario==1"><a href="#">Listado Productos <span class="sr-only">(current)</span></a></li>
         <li *ngIf="rol.crear_producto==1"><a routerLink="/lispedido">Listado Pedidos <span class="sr-only">(current)</span></a></li>
         <li class="dropdown" *ngIf="rol.modificar_producto==1">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Estadisticas <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li  *ngIf="rol.crear_usuario==1"><a routerLink="/ventasPorLocal">Ventas por Local<span class="sr-only">(current)</span> </a></li>
-            <li><a href="#">Ventas por Local y Empleado</a></li>
-            <li><a href="#">Reportes de Clientes y sus Compras</a></li>
+            <li  *ngIf="rol.crear_usuario==1"><a routerLink="/estadisticasEncuesta">Estadísticas de las Encuestas de Satisfacción<span class="sr-only">(current)</span> </a></li>
+            <li  *ngIf="rol.crear_usuario==1"><a routerLink="/importesTrabajos">Importes por Mes de trabajo<span class="sr-only">(current)</span> </a></li>
           </ul>
         </li>
         <li *ngIf="rol.crear_producto==1"><a routerLink="/encuesta">Encuesta<span class="sr-only">(current)</span></a></li>
