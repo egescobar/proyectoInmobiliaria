@@ -6,6 +6,9 @@ export class producto {
   moneda: string;
   precio: number;
   es_oferta: string;
-  imagen: string;
+  imagen: string[]=[];
+  image:string;
   sucursal:string;
+  latitud:number;
+  longitud:number;
 }

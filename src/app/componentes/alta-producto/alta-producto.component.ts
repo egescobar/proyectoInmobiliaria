@@ -9,6 +9,11 @@ import { producto } from './altaProducto';
 import { altaProductoService }  from './alta-producto.service';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 
+import { FileHolder } from 'angular2-image-upload/src/image-upload/image-upload.component';
+
+import { RotatingPlaneComponent } from 'ng2-spin-kit/app/spinner/rotating-plane.component';
+import {WanderingCubesComponent} from '../../wandering-cubes';
+
 import {} from '@types/googlemaps';
 declare var google: any;
 
@@ -22,7 +27,7 @@ export class AltaProductoComponent implements OnInit {
 producto: producto;
 productos: producto[]=[];
 selectedProductos:producto;
-
+spiner:string;
 
   public latitude: number;
   public longitude: number;
@@ -36,7 +41,7 @@ selectedProductos:producto;
     private  productoService: altaProductoService,
     private route: ActivatedRoute,
     private location: Location,
-        private mapsAPILoader: MapsAPILoader,
+    private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {}
 
@@ -45,6 +50,8 @@ selectedProductos:producto;
     this.producto.id_producto=0;
     this.getProductos();
     
+    this.spiner='visible';
+    console.log('App initialized!');
     //set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -94,6 +101,7 @@ selectedProductos:producto;
 
 GuardarProducto(): void {
     if (this.producto.id_producto == 0) {
+      console.log(this.producto);
       this.productoService.insert(this.producto).then(hero => {
         this.productos.push(this.producto);
         this.selectedProductos = null;
@@ -108,11 +116,12 @@ GuardarProducto(): void {
     }
     //.then(() => this.goBack());
   }
-  
+
   getProductos(): void {
     this.productoService
       .get()
-      .then(heroes => this.productos = heroes);
+      .then(heroes => {this.productos = heroes;
+      this.spiner='hiden';});
   
   }
 
@@ -139,15 +148,12 @@ GuardarProducto(): void {
       this.producto.sucursal =producto.sucursal;
 
     }
-
-  /* delete(prod: producto): void {
-    this.productoService
-      .delete(prod.id_producto)
-      .then(() => {
-        this.productos = this.productos.filter(h => h !== prod);
-        if (this.selectedProductos === prod) { this.selectedProductos = null; }
-      });
-   }*/
-
+imageFinishedUploading(file: FileHolder) {
+ this.producto.imagen.push(file.serverResponse["_body"]);
+ console.log(this.producto.imagen);
+}
+uploadStateChange(state: boolean) {
+  console.log(JSON.stringify(state));
+}
 
 }

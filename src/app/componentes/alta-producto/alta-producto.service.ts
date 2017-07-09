@@ -10,8 +10,8 @@ export class altaProductoService{
 
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    //private productoUrl ='http://desktop-l32rr4d:8080/public/producto'
-    private productoUrl ='http://escobargraciela.hol.es/public/producto'
+    private productoUrl ='http://desktop-l32rr4d:8080/public/producto'
+    //private productoUrl ='http://escobargraciela.hol.es/public/producto'
 
     constructor(private http: Http) { }
 
@@ -24,8 +24,10 @@ export class altaProductoService{
                                 moneda:prod.moneda,
                                 precio:prod.precio,
                                 es_oferta: 0,//prod.es_oferta,
-                                imagen:"http://www.marquezpropiedades.com.ar/images/venta/vta_dto_tapalque-48-1-y-2-run.jpg",//prod.imagen,
-                                sucursal: prod.sucursal
+                                imagen:prod.imagen,
+                                sucursal: prod.sucursal,
+                                latitud:prod.latitud,
+                                longitud:prod.longitud
                               }), {headers: this.headers})
       .toPromise()
       .then(() => null)
