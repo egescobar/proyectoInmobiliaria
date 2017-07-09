@@ -6,4 +6,5 @@ indica las rutas opcionales a los otras Propiedades (comparativo entre dos propi
 El cliente despues de cargar alguna reserva, realizara una encuesta de sastifaccion
 
 
-Para ingresar a la aplicacion escobargraciela.hol.es
+Para ingresar a la aplicacion 
+ https://escobargraciela.hol.es.
