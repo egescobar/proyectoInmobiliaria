@@ -28,7 +28,9 @@ insert(encuesta: encuesta): Promise<void> {
                               servicio_que_contrato:encuesta.servicio_que_contrato,
                             atencion_del_personal:encuesta.atencion_del_personal,
                              mejoramiento_servicio:encuesta.mejoramiento_servicio,
-                        comentarios:encuesta.comentarios}), {headers: this.headers})
+                        comentarios:encuesta.comentarios,
+                      nuestro_sistema1:encuesta.nuestro_sistema1,
+                    nuestro_sistema2:encuesta.nuestro_sistema2}), {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.encuestaError);

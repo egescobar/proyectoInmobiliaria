@@ -6,4 +6,6 @@ servicio_que_contrato: number;
 atencion_del_personal: number;
 mejoramiento_servicio: string;
 comentarios: string;
+nuestro_sistema1: string;
+nuestro_sistema2: string;
 }
