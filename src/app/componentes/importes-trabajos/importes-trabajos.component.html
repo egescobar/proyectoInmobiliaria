@@ -1,0 +1,23 @@
+<app-menu></app-menu>
+<div class="col col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Importes por Mes de trabajo</div>
+        <div class="panel-body">
+
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <!--<button (click)="randomize()">Update</button>-->
+</div>
+
+</div>
+</div>
+</div>
