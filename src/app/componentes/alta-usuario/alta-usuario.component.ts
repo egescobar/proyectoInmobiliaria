@@ -1,40 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router,ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 import {usuario} from './usuario';
+import {rol} from '../menu/rol';
 import {usuarioService} from './alta-usuario.service';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
-
+import { AutService } from '../../service/auth/aut.service';
 
 import * as jsPDF from 'jspdf'
+
+import { RotatingPlaneComponent } from 'ng2-spin-kit/app/spinner/rotating-plane.component';
+import {WanderingCubesComponent} from '../../wandering-cubes';
 
 @Component({
   selector: 'app-alta-usuario',
   templateUrl: './alta-usuario.component.html',
   styleUrls: ['./alta-usuario.component.css']
 })
+
+
+
 export class AltaUsuarioComponent implements OnInit {
   usuario: usuario;
   usuarios: usuario[] = [];
   selectedUsuarios: usuario;
   table:any;
 
+    Aut:AutService;
+  rol: rol;
+
+spiner:string;
+
   constructor( private usrService: usuarioService,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location,
+    private router: Router) {
+      this.Aut = new AutService(router);
+     }
 
-  ngOnInit() {
+  ngOnInit(): any {
     this.usuario = new usuario();
     this.usuario.id=0;
+    this.rol = new rol();
+    this.rol =this.Aut.getRol();
     this.getUsuario();
+    this.spiner='visible';
+    console.log('App initialized!');
   }
+
+
+
 
   getUsuario(): void {
     this.usrService
       .get()
-      .then(heroes => this.usuarios = heroes);
+      .then(heroes => {this.usuarios = heroes;
+        this.spiner='hiden';});
+
   }
 
   Registrarse(): void {

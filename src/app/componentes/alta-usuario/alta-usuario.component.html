@@ -3,30 +3,60 @@
 <body class="bg">
   <app-menu></app-menu>
   <div class="container">
-    <form class="col-md-3 ">
+    <form class="col-md-3 " #heroForm="ngForm" (ngSubmit)="Registrarse()">
       <div class="panel panel-primary">
         <div class="panel-heading center">Registrar Usuarios</div>
         <div class="panel-body">
 
           <div class="form-group">
             <label>Nombre:</label>
-            <input type="Text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre" required/>
+            <input type="Text" minlength="4" maxlength="24" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre"
+              required #nombre="ngModel"/>
+            <div *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+              <div [hidden]="!nombre.errors.required">
+                Nombre es requerido
+              </div>
+              <div [hidden]="!nombre.errors.minlength">
+                Nombre debe tener un minimo de 4 caracteres
+              </div>
+              <div [hidden]="!nombre.errors.maxlength">
+                Nombre debe tener un maximo de 24 caracteres.
+              </div>
+            </div>
+
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="usuario.mail" required />
+            <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="usuario.mail" required #mail="ngModel"/>
+            <div *ngIf="mail.errors && (mail.dirty || mail.touched)" class="alert alert-danger">
+              <div [hidden]="!mail.errors.required">
+                Mail es requerido
+              </div>
+
+            </div>
           </div>
           <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="usuario.clave" />
+            <input type="password" #clave="ngModel" class="form-control" minlength="5" max="20" id="clave" name="clave" [(ngModel)]="usuario.clave" />
+            <div *ngIf="clave.errors && (clave.dirty || clave.touched)" class="alert alert-danger">
+              <div [hidden]="!clave.errors.required">
+                clave es requerido
+              </div>
+              <div [hidden]="!clave.errors.minlength">
+                clave debe tener un minimo de 5 caracteres
+              </div>
+              <div [hidden]="!clave.errors.maxlength">
+                clave debe tener un maximo de 20 caracteres.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="tipoUsu">Tipo Usuario:</label>
             <select class="form-control" id="rol" name="rol" [(ngModel)]="usuario.rol">
-            <option value="1">Administrador</option>
-            <option value="2">Encargado</option>
-            <option value="3">Empleado</option>
-            <option value="4">Cliente</option>
+            <option value="1" *ngIf="rol.id_rol==1">Administrador</option>
+            <option value="2" *ngIf="rol.id_rol<2">Encargado</option>
+            <option value="3" *ngIf="rol.id_rol<=2">Empleado</option>
+            <option value="4" *ngIf="rol.id_rol<=3">Cliente</option>
           </select>
           </div>
           <div class="form-group">
@@ -39,8 +69,8 @@
           </div>
           <input type="hidden" id="id" name="id" [(ngModel)]="usuario.id" />
           <div class="form-group col-md-6 col-md-offset-2">
-            <button (click)="Registrarse()" class="btn btn-info">Grabar</button>
-          </div>
+            <input type="submit" value="Grabar" [disabled]="!heroForm.form.valid" class="btn btn-info">
+                      </div>
 
         </div>
       </div>
@@ -50,6 +80,8 @@
       <div class="panel panel-primary">
         <div class="panel-heading center">Usuarios</div>
         <div class="panel-body">
+
+    <wandering-cubes class="{{spiner}}"></wandering-cubes>
           <div class="table-responsive">
             <table id="table" name="table" class="table table-condensed">
               <thead>
@@ -64,7 +96,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let usuario of usuarios" (click)="onSelect(usuario)" [class.selected]="usuario === selectedUser">
+                <tr *ngFor="let usuario of usuarios" [class.selected]="usuario === selectedUser">
                   <td>{{usuario.nombre}}</td>
                   <td>{{usuario.mail}}</td>
                   <td>{{usuario.clave}}</td>
@@ -79,12 +111,13 @@
         </div>
       </div>
       <div>
-      <button class="btn btn-primary" (click)="exportExcel()">Excel</button>
-      <button class="btn btn-primary" (click)="exportPDF()">PDF</button>
+        <button class="btn btn-primary" (click)="exportExcel()">Excel</button>
+        <button class="btn btn-primary" (click)="exportPDF()">PDF</button>
+      </div>
     </div>
-    </div>
-    
+
   </div>
+
 </body>
 
 </html>
