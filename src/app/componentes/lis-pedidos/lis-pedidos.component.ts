@@ -49,7 +49,9 @@ export class LisPedidosComponent implements OnInit {
 
   exportExcel() {
     var data = this.lispedidos;
-    new Angular2Csv(data, 'listadoPedidos');
+       var options = {fieldSeparator:';',
+                    showLabels: true};
+    new Angular2Csv(data, 'listadoPedidos',options);
   }
 
 }
