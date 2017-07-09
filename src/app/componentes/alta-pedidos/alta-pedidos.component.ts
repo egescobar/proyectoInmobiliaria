@@ -8,7 +8,7 @@ import { pedido } from './pedido';
 import { AltaPedidoService }  from './pedidoService';
 
 @Component({
-  selector: 'app-alta-pedidos',
+  selector: 'app-pedidos',
   templateUrl: './alta-pedidos.component.html',
   styleUrls: ['./alta-pedidos.component.css']
 })
@@ -38,6 +38,7 @@ EnviarPedido(): void {
         this.selectedPedidos = null;
         this.pedido = new pedido();
       });
+        location.reload(true);
     }
     //.then(() => this.goBack());
   }
