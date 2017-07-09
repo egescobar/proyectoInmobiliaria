@@ -1,0 +1,19 @@
+<app-menu></app-menu>
+<div class="col col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading center">Estadísticas de las Encuestas de Satisfacción</div>
+        <div class="panel-body">
+
+<div style="display: block">
+  <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+
+</div>
+</div>
+</div>
